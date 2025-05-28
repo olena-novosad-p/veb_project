@@ -1,0 +1,234 @@
+// Файл: scss/profile.scss
+// Опис: Оновлені стилі для сторінки профілю (profile.html) з розширеною адаптивністю.
+
+@import 'variables_colors';
+@import 'variables_mix';
+
+// --- Загальні стилі ---
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background-color: $color-primary-bg;
+  color: $text-color-dark;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// --- Стилі для шапки ---
+.header {
+  background-color: $color-primary-light;
+  padding: 15px 0;
+  
+  .container {
+    @include flex-center;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: $text-color-dark;
+  }
+
+  &-nav ul {
+    margin: 0; padding: 0;
+    list-style: none; display: flex;
+    gap: 20px;
+  }
+
+  &-nav a {
+    text-decoration: none;
+    color: $text-color-dark;
+    font-weight: bold;
+    padding-bottom: 5px;
+    transition: border-color 0.3s;
+
+    &.active, &:hover {
+      border-bottom: 2px solid $color-primary-dark;
+    }
+  }
+}
+
+// --- Основний контент профілю ---
+.main-profile {
+  padding: 50px 0;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr; // Зробив першу колонку фіксованою
+  gap: 40px;
+  align-items: start;
+}
+
+// --- Картка профілю ---
+.profile-card {
+  background-color: $color-primary-medium;
+  color: $text-color-light;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  position: relative;
+
+   &-header {
+    position: absolute;
+    top: 0.75rem;   // замість 12px
+    right: 0.75rem; // замість 12px
+    display: flex;
+    gap: 0.5rem;    // замість 8px
+
+    // Тепер задаємо розміри у rem і робимо картинки адаптивними
+    button {
+      background: none;
+      border: none;
+      padding: 0.15rem;     // замість 4px
+      width: 1.7rem;        // базовий розмір
+      height: 1.7rem;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: auto;      // зберігає пропорції
+        object-fit: contain;
+      }
+
+      &:hover img {
+        filter: brightness(1.7);
+      }
+    }
+
+    // На більших екранах – трохи збільшуємо кнопки
+    @include responsive(tablet) {
+      button {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+
+  .icon-btn {
+    background: none; border: none;
+    color: $color-white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.3s;
+    
+    &:hover { color: $color-primary-light; }
+  }
+
+  &-body {
+    text-align: center;
+  }
+  
+  .profile-avatar {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background-color: $color-white;
+    margin: 10px auto 20px;
+    object-fit: cover;
+    @include flex-center;
+    font-size: 3rem;
+    color: $color-primary-dark;
+  }
+  
+  .profile-name {
+    margin: 0;
+    font-size: 2rem;
+    word-wrap: break-word; // Переносимо довге ім'я
+  }
+
+  .profile-email {
+    margin-top: 5px;
+    font-size: 1rem;
+    color: $color-primary-light;
+    word-wrap: break-word;
+  }
+
+  .profile-details {
+    margin-top: 30px;
+    text-align: left;
+    font-size: 1.1rem;
+  }
+}
+
+// --- Список подорожей ---
+.trips-list {
+  background-color: $color-primary-light;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+
+  h3 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    font-weight: normal;
+  }
+
+  .trip-item {
+    background-color: $color-white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  .btn-more {
+    @include button-style($color-primary-dark, $text-color-light);
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+  }
+}
+
+// --- РОЗШИРЕНА АДАПТИВНІСТЬ ---
+@include responsive(tablet) { // до 1024px
+  .profile-grid {
+    grid-template-columns: 1fr; // Одна колонка на планшетах
+    gap: 30px;
+  }
+}
+
+@include responsive(mobile-large) { // до 680px
+  .header .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .main-profile {
+    padding: 30px 0;
+  }
+  .profile-avatar {
+      width: 100px;
+      height: 100px;
+  }
+  .profile-name {
+      font-size: 1.7rem;
+  }
+}
+
+@include responsive(mobile-small) { // до 420px
+  .header-nav a {
+    font-size: 0.9rem;
+  }
+  .profile-card, .trips-list {
+    padding: 20px;
+  }
+  .profile-details {
+    font-size: 1rem;
+  }
+  .trip-item {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  .btn-more {
+    width: 100%;
+    box-sizing: border-box; // Щоб padding не виходив за межі
+  }
+}

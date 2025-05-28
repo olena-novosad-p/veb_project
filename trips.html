@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Список моїх подорожей">
+    <title>Мої подорожі - Trip to go</title>
+    <link rel="stylesheet" href="css/trips.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="main.html" class="header-logo">TRIP TO GO</a>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="trips.html" class="active">Мої подорожі</a></li>
+                    <li><a href="main.html#start">Почати подорож</a></li>
+                    <li><a href="profile.html">Профіль</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-trips">
+        <div class="container">
+            <div class="trips-controls">
+                <nav class="trips-filter">
+                    <ul>
+                        <li><a href="#" class="active">All Trips</a></li>
+                        <li><a href="#">Active Trips</a></li>
+                        <li><a href="#">Past Trips</a></li>
+                    </ul>
+                </nav>
+                <label for="modal-toggle" class="btn-new-trip">
+                    <span>New Trip</span>
+                    <img src="assets/add.png" alt="Add icon">
+                </label>
+            </div>
+
+            <div class="trips-content">
+                <section class="trips-section">
+                    <h2>My Trips</h2>
+                    <article class="trip-card">
+                        <img src="assets/photo-2.jpg" alt="Landscape of a trip" class="trip-card-image">
+                        <div class="trip-card-body">
+                            <h3>New trip</h3>
+                            <p>An unforgettable journey filled with breathtaking landscapes, vibrant cultures, and moments that turn into lifelong memories...</p>
+                            <div class="trip-card-meta">
+                                <span>number of participants: 7</span>
+                                <span>start date: 14/08/25</span>
+                            </div>
+                        </div>
+                        <div class="trip-card-actions">
+                            <button><img src="assets/Edit.png" alt="Edit trip"></button>
+                            <button><img src="assets/delete.png" alt="Delete trip"></button>
+                        </div>
+                    </article>
+                    <article class="trip-card">
+                        <img src="assets/photo-2.jpg" alt="Landscape of a trip" class="trip-card-image">
+                        <div class="trip-card-body">
+                            <h3>New trip</h3>
+                            <p>An unforgettable journey filled with breathtaking landscapes, vibrant cultures, and moments that turn into lifelong memories...</p>
+                            <div class="trip-card-meta">
+                                <span>number of participants: 7</span>
+                                <span>start date: 14/08/25</span>
+                            </div>
+                        </div>
+                        <div class="trip-card-actions">
+                            <button><img src="assets/Edit.png" alt="Edit trip"></button>
+                            <button><img src="assets/delete.png" alt="Delete trip"></button>
+                        </div>
+                    </article>
+                </section>
+                 <section class="trips-section">
+                    <h2>Other's Trips</h2>
+                    <article class="trip-card">
+                        <img src="assets/photo-2.jpg" alt="Landscape of a trip" class="trip-card-image">
+                        <div class="trip-card-body">
+                             <h3>New trip</h3>
+                            <p>An unforgettable journey filled with breathtaking landscapes, vibrant cultures, and moments that turn into lifelong memories...</p>
+                            <div class="trip-card-meta">
+                                <span>number of participants: 7</span>
+                                <span>start date: 14/08/25</span>
+                            </div>
+                        </div>
+                        <div class="trip-card-actions">
+                            <button><img src="assets/Edit.png" alt="Edit trip"></button>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <input type="checkbox" id="modal-toggle" class="modal-toggle">
+
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <form action="#" class="add-trip-form">
+                <h2>Add Trip</h2>
+                 <div class="form-group">
+                    <label for="trip-title">Title</label>
+                    <input type="text" id="trip-title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="trip-description">Description</label>
+                    <textarea id="trip-description" name="description"></textarea>
+                </div>
+                 <div class="form-group">
+                    <label for="start-date">Start date</label>
+                    <input type="text" id="start-date" name="start-date" placeholder="дд.мм.рррр" required>
+                </div>
+                 <div class="form-group">
+                    <label for="end-date">End date</label>
+                    <input type="text" id="end-date" name="end-date" placeholder="дд.мм.рррр" required>
+                </div>
+                <div class="form-actions">
+                    <label for="modal-toggle" class="btn-save">Save</label>
+                    <label for="modal-toggle" class="btn-cancel">Cancel</label>
+                </div>
+            </form>
+        </div>
+        <label for="modal-toggle" class="modal-close-bg"></label>
+    </div>
+    
+    </body>
+</html>

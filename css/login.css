@@ -1,0 +1,191 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  background-color: #e9e7ed;
+  color: #3e3734;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.header {
+  background-color: #ccc7d4;
+  padding: 15px 0;
+}
+.header .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #3e3734;
+}
+.header-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.header-nav a {
+  text-decoration: none;
+  color: #3e3734;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+.header-nav a.active, .header-nav a:hover {
+  border-bottom: 2px solid #3e3734;
+}
+
+.main {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 30px 0;
+}
+
+.login-form-container {
+  background-color: #6f6570;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+.login-form-container h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.login-form-container .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.login-form-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+.login-form-container input[type=text],
+.login-form-container input[type=email],
+.login-form-container input[type=password],
+.login-form-container input[type=date],
+.login-form-container textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e9e7ed;
+  color: #3e3734;
+  box-sizing: border-box;
+}
+.login-form-container input[type=text]::-moz-placeholder, .login-form-container input[type=email]::-moz-placeholder, .login-form-container input[type=password]::-moz-placeholder, .login-form-container input[type=date]::-moz-placeholder, .login-form-container textarea::-moz-placeholder {
+  color: #a9a9a9;
+}
+.login-form-container input[type=text]::placeholder,
+.login-form-container input[type=email]::placeholder,
+.login-form-container input[type=password]::placeholder,
+.login-form-container input[type=date]::placeholder,
+.login-form-container textarea::placeholder {
+  color: #a9a9a9;
+}
+.login-form-container textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.login-form-container .form-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+.login-form-container .btn-submit {
+  background-color: #ccc7d4;
+  color: #3e3734;
+  padding: 10px 25px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  width: 50%;
+  margin-top: 10px;
+}
+.login-form-container .btn-submit:hover {
+  background-color: #b7b0c2;
+  transform: translateY(-2px);
+}
+.login-form-container .btn-submit:active {
+  transform: translateY(0);
+}
+.login-form-container .login-prompt {
+  margin-top: 20px;
+  color: #e9e7ed;
+}
+.login-form-container .login-prompt a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 680px) {
+  .header-logo {
+    font-size: 1.2rem;
+  }
+  .header-nav ul {
+    gap: 10px;
+  }
+  .header-nav a {
+    font-size: 0.9rem;
+  }
+  .login-form-container {
+    max-width: 340px;
+  }
+}
+@media (max-width: 420px) {
+  .main {
+    padding: 20px 15px;
+    min-height: auto;
+  }
+  .header .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .login-form-container {
+    padding: 30px 20px;
+    width: 100%;
+    margin: 0;
+  }
+  .login-form-container h2 {
+    font-size: 1.5rem;
+  }
+  .btn-submit {
+    width: 100%;
+  }
+}/*# sourceMappingURL=login.css.map */

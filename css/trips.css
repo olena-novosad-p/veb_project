@@ -1,0 +1,396 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  background-color: #e9e7ed;
+  color: #3e3734;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  background-color: #ccc7d4;
+  padding: 15px 0;
+}
+.header .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #3e3734;
+}
+.header-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.header-nav a {
+  text-decoration: none;
+  color: #3e3734;
+  font-weight: bold;
+  padding-bottom: 5px;
+  transition: border-color 0.3s;
+}
+.header-nav a.active, .header-nav a:hover {
+  border-bottom: 2px solid #3e3734;
+}
+
+.main-trips {
+  padding: 40px 0;
+}
+
+.trips-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.trips-filter ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+.trips-filter ul a {
+  text-decoration: none;
+  color: #3e3734;
+  font-weight: bold;
+  padding-bottom: 8px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+.trips-filter ul a.active, .trips-filter ul a:hover {
+  color: #3b363c;
+  border-bottom-color: #3b363c;
+}
+
+.btn-new-trip {
+  background-color: #e9e7ed;
+  color: #3e3734;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-new-trip img {
+  width: 20px;
+  height: 20px;
+}
+
+.trips-section h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #3e3734;
+  margin-bottom: 20px;
+}
+.trips-section:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.trip-card {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 20px;
+  background-color: #ccc7d4;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.trip-card-image {
+  width: 100%;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+.trip-card-body h3 {
+  margin: 0 0 10px 0;
+}
+.trip-card-body p {
+  margin: 0 0 15px 0;
+  color: #3e3734;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.trip-card-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.8rem;
+  color: #6f6570;
+}
+.trip-card-actions {
+  display: flex;
+  gap: 15px;
+}
+.trip-card-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.trip-card-actions button img {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-new-trip, .btn-cancel {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.modal-toggle {
+  display: none;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.43);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-content {
+  position: relative;
+  z-index: 1001;
+}
+.modal-content .add-trip-form {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  color: #3e3734;
+}
+.modal-content .add-trip-form h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.modal-content .add-trip-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.modal-content .add-trip-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+.modal-content .add-trip-form input[type=text],
+.modal-content .add-trip-form input[type=email],
+.modal-content .add-trip-form input[type=password],
+.modal-content .add-trip-form input[type=date],
+.modal-content .add-trip-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e9e7ed;
+  color: #3e3734;
+  box-sizing: border-box;
+}
+.modal-content .add-trip-form input[type=text]::-moz-placeholder, .modal-content .add-trip-form input[type=email]::-moz-placeholder, .modal-content .add-trip-form input[type=password]::-moz-placeholder, .modal-content .add-trip-form input[type=date]::-moz-placeholder, .modal-content .add-trip-form textarea::-moz-placeholder {
+  color: #a9a9a9;
+}
+.modal-content .add-trip-form input[type=text]::placeholder,
+.modal-content .add-trip-form input[type=email]::placeholder,
+.modal-content .add-trip-form input[type=password]::placeholder,
+.modal-content .add-trip-form input[type=date]::placeholder,
+.modal-content .add-trip-form textarea::placeholder {
+  color: #a9a9a9;
+}
+.modal-content .add-trip-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.modal-content .add-trip-form .form-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+.modal-content .add-trip-form h2 {
+  color: #3e3734;
+}
+.modal-content .btn-save {
+  background-color: #6f6570;
+  color: #ffffff;
+  padding: 10px 25px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-color: #bcb9c1;
+  padding: 10px 25px;
+}
+.modal-content .btn-save:hover {
+  background-color: #5a525b;
+  border-color: #a29ea9;
+  transform: translateY(-2px);
+}
+.modal-content .btn-save:active {
+  transform: translateY(0);
+}
+.modal-content .btn-cancel {
+  background-color: #e9e7ed;
+  color: #3e3734;
+  padding: 10px 25px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-color: #bcb9c1;
+  padding: 10px 25px;
+}
+.modal-content .btn-cancel:hover {
+  background-color: #d4d0dc;
+  border-color: #a29ea9;
+  transform: translateY(-2px);
+}
+.modal-content .btn-cancel:active {
+  transform: translateY(0);
+}
+
+.modal-close-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.modal-toggle:checked ~ .modal-overlay {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 1024px) {
+  .trip-card {
+    grid-template-columns: 150px 1fr;
+    grid-template-areas: "image body" "image actions";
+    gap: 15px 20px;
+  }
+  .trip-card-image {
+    grid-area: image;
+  }
+  .trip-card-body {
+    grid-area: body;
+  }
+  .trip-card-actions {
+    grid-area: actions;
+    justify-self: end;
+  }
+}
+@media (max-width: 680px) {
+  .trips-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .trip-card {
+    grid-template-columns: 1fr;
+    grid-template-areas: "image" "body" "actions";
+  }
+  .trip-card-image {
+    height: 150px;
+  }
+  .trip-card-actions {
+    justify-self: start;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 420px) {
+  .trips-filter ul {
+    gap: 15px;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+  }
+  .modal-content {
+    margin: 0 15px;
+  }
+}
+.modal-content {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+@media (max-width: 1024px) {
+  .modal-overlay {
+    padding: 15px;
+  }
+  .modal-content {
+    max-width: 90%;
+  }
+  .add-trip-form {
+    padding: 15px;
+  }
+  .add-trip-form h2 {
+    font-size: 1.25rem;
+  }
+  .add-trip-form .form-actions {
+    flex-direction: column;
+  }
+}
+@media (max-width: 420px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+  .modal-content {
+    max-width: 100%;
+  }
+  .add-trip-form {
+    padding: 10px;
+  }
+  .add-trip-form h2 {
+    font-size: 1.1rem;
+  }
+  .add-trip-form .form-group input,
+  .add-trip-form .form-group textarea {
+    font-size: 0.85rem;
+  }
+}/*# sourceMappingURL=trips.css.map */

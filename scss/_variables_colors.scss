@@ -1,0 +1,26 @@
+// Файл: scss/_variables_colors.scss
+// Опис: Зберігає всі змінні кольорів, що використовуються в проєкті.
+
+$color-black: #000000;
+$color-white: #ffffff;
+
+// Основні кольори з макету
+$color-primary-dark: #3e3734;
+$color-primary-darker: #3b363c; // Новий колір
+$color-primary-light: #ccc7d4;
+$color-primary-medium: #6f6570;
+$color-primary-bg: #e9e7ed;
+
+// Додаткові відтінки
+$color-grey-light: #d5d2d9;
+$color-grey-medium: #bcb9c1;
+
+// Кольори для тексту
+$text-color-light: #ffffff;
+$text-color-dark: #3e3734;
+$text-color-grey: #a9a9a9; // Для плейсхолдерів та іншого
+
+// Кольори з прозорістю
+$color-black-43: rgba(0, 0, 0, 0.43); // З палітри
+$color-primary-dark-40: rgba(62, 55, 52, 0.40);
+$color-primary-light-70: rgba(204, 199, 212, 0.70);

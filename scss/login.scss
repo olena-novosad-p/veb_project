@@ -1,0 +1,134 @@
+// Файл: scss/login.scss
+// Опис: Оновлені стилі для сторінки входу (login.html) з розширеною адаптивністю.
+
+@import 'variables_colors';
+@import 'variables_mix';
+
+// --- Загальні стилі ---
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background-color: $color-primary-bg;
+  color: $text-color-dark;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// --- Стилі для шапки ---
+.header {
+  background-color: $color-primary-light;
+  padding: 15px 0;
+  
+  .container {
+    @include flex-center;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: $text-color-dark;
+  }
+
+  &-nav ul {
+    margin: 0; padding: 0;
+    list-style: none; display: flex;
+    gap: 20px;
+  }
+
+  &-nav a {
+    text-decoration: none;
+    color: $text-color-dark;
+    font-weight: bold;
+    padding-bottom: 5px;
+
+    &.active, &:hover {
+      border-bottom: 2px solid $color-primary-dark;
+    }
+  }
+}
+
+// --- Стилі для секції входу ---
+.main {
+  min-height: calc(100vh - 70px);
+  @include flex-center;
+  padding: 30px 0;
+}
+
+.login-form-container {
+  @include form-container-style(400px, $color-primary-medium); // Використовуємо міксін!
+
+  // Унікальні стилі для цієї форми
+  .btn-submit {
+    @include button-style($color-primary-light, $text-color-dark);
+    width: 50%;
+    margin-top: 10px;
+  }
+  
+  .login-prompt {
+    margin-top: 20px;
+    color: $color-primary-bg;
+    
+    a {
+      color: $color-white;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}
+
+// --- РОЗШИРЕНА АДАПТИВНІСТЬ ---
+@include responsive(mobile-large) { // до 680px
+  .header {
+    &-logo {
+      font-size: 1.2rem;
+    }
+    &-nav ul {
+      gap: 10px;
+    }
+    &-nav a {
+      font-size: 0.9rem;
+    }
+  }
+  .login-form-container {
+    max-width: 340px;
+  }
+}
+
+@include responsive(mobile-small) { // до 420px
+  .main {
+    padding: 20px 15px; // Гарантує відступи з боків
+    min-height: auto; // Дозволяє контенту рости
+  }
+  .header .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .login-form-container {
+    padding: 30px 20px; // Зменшуємо внутрішні відступи
+    width: 100%;
+    margin: 0;
+  }
+  
+  .login-form-container h2 {
+      font-size: 1.5rem;
+  }
+  
+  .btn-submit {
+      width: 100%;
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Профіль користувача та список подорожей">
+    <title>Мій профіль - Trip to go</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <a href="main.html" class="header-logo">TRIP TO GO</a>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="trips.html" class="active">Мої подорожі</a></li>
+                    <li><a href="main.html#start">Почати подорож</a></li>
+                    <li><a href="login.html">Вихід</a></li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-profile">
+        <div class="container profile-grid">
+            
+            <aside class="profile-card">
+                <div class="profile-card-header">
+                    <button class="icon-btn" aria-label="Редагувати профіль"><img src="assets/Edit.png" alt="Редагувати профіль"></button>
+                    <button class="icon-btn" aria-label="Видалити профіль"><img src="assets/delete.png" alt="Видалити профіль"></button>
+                </div>
+                <div class="profile-card-body">
+                    <img src=".\assets\gen.png" alt="Аватар користувача" class="profile-avatar">
+                    <h2 class="profile-name">User Name</h2>
+                    <p class="profile-email">user.example@gmail.com</p>
+                    <div class="profile-details">
+                        <p><strong>Gender:</strong> Female</p>
+                        <p><strong>Birth Date:</strong> 14/05/2006</p>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="trips-list">
+                <h3>Trip</h3>
+                <div class="trip-item">Trip 1</div>
+                <div class="trip-item">Trip 2</div>
+                <div class="trip-item">Trip 3</div>
+                <a href="trips.html" class="btn-more">See more</a>
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>

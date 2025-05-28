@@ -1,0 +1,320 @@
+// Файл: scss/trips.scss
+// Опис: Стилі для сторінки подорожей (trips.html) та модального вікна.
+
+@import 'variables_colors';
+@import 'variables_mix';
+
+// --- Загальні стилі ---
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background-color: $color-primary-bg;
+  color: $text-color-dark;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// --- Стилі для шапки (можна винести в окремий файл _header.scss) ---
+.header {
+  // ... (стилі шапки, як і на інших сторінках) ...
+  background-color: $color-primary-light;
+  padding: 15px 0;
+  
+  .container { @include flex-center; justify-content: space-between; }
+  &-logo { font-weight: bold; font-size: 1.5rem; text-decoration: none; color: $text-color-dark; }
+  &-nav ul { margin: 0; padding: 0; list-style: none; display: flex; gap: 20px; }
+  &-nav a { text-decoration: none; color: $text-color-dark; font-weight: bold; padding-bottom: 5px; transition: border-color 0.3s;
+    &.active, &:hover { border-bottom: 2px solid $color-primary-dark; }
+  }
+}
+
+// --- Основний контент ---
+.main-trips {
+  padding: 40px 0;
+}
+
+.trips-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap; // Для адаптивності
+  gap: 20px;
+}
+
+.trips-filter ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  
+  a {
+    text-decoration: none;
+    color: $text-color-dark;
+    font-weight: bold;
+    padding-bottom: 8px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+
+    &.active, &:hover {
+      color: $color-primary-darker;
+      border-bottom-color: $color-primary-darker;
+    }
+  }
+}
+
+.btn-new-trip {
+  background-color: $color-primary-bg;
+  color: $text-color-dark;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.trips-section {
+  h2 {
+    font-weight: normal;
+    text-transform: uppercase;
+    color: $color-primary-dark;
+    margin-bottom: 20px;
+  }
+  
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+}
+
+.trip-card {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 20px;
+  background-color: $color-primary-light;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+
+  &-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  &-body {
+    h3 {
+      margin: 0 0 10px 0;
+    }
+    p {
+      margin: 0 0 15px 0;
+      color: $color-primary-dark;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+  }
+
+  &-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.8rem;
+    color: $color-primary-medium;
+  }
+
+  &-actions {
+    display: flex;
+    gap: 15px;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+// Я залишу тільки те, що змінилося, щоб було зрозуміліше
+.btn-new-trip, .btn-cancel { // Стилізуємо <label> як кнопки
+    cursor: pointer;
+    display: inline-flex; // Важливо для правильного відображення
+    align-items: center;
+}
+
+// --- СТИЛІ ДЛЯ ЧЕКБОКС-ХАКУ ---
+
+// 1. Повністю ховаємо сам чекбокс
+.modal-toggle {
+  display: none;
+}
+
+// 2. Стилізуємо модальне вікно
+.modal-overlay {
+  display: none; // За замовчуванням модалка ПРИХОВАНА
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-black-43;
+  z-index: 1000;
+  @include flex-center;
+  // Плавна поява
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-content {
+  position: relative; // Щоб фон для закриття не перекривав контент
+  z-index: 1001;
+  // ... (всі стилі для .add-trip-form залишаються) ...
+  .add-trip-form {
+    @include form-container-style(450px, $color-white);
+    color: $text-color-dark;
+
+    h2 { color: $text-color-dark; }
+  }
+
+  .btn-save {
+      @include button-style($color-primary-medium, $color-white, true);
+      padding: 10px 25px;
+  }
+
+  .btn-cancel {
+      @include button-style($color-primary-bg, $text-color-dark, true);
+      // Важливо для <label>, щоб він виглядав як кнопка
+      padding: 10px 25px; 
+  }
+}
+
+// Лейбл для закриття по кліку на фон
+.modal-close-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+// 3. МАГІЯ: Показуємо модалку, коли чекбокс :checked
+// Використовуємо `~` (general sibling selector), бо чекбокс і модалка - сусіди в <body>
+.modal-toggle:checked ~ .modal-overlay {
+  display: flex; // Змінюємо з none на flex
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+// --- Адаптивність ---
+@include responsive(tablet) { // до 1024px
+  .trip-card {
+    grid-template-columns: 150px 1fr;
+    grid-template-areas: 
+      "image body"
+      "image actions";
+    gap: 15px 20px;
+    
+    &-image { grid-area: image; }
+    &-body { grid-area: body; }
+    &-actions { grid-area: actions; justify-self: end; }
+  }
+}
+
+@include responsive(mobile-large) { // до 680px
+  .trips-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .trip-card {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "image"
+      "body"
+      "actions";
+    
+    &-image {
+      height: 150px;
+    }
+
+    &-actions {
+      justify-self: start;
+      margin-top: 10px;
+    }
+  }
+}
+
+@include responsive(mobile-small) { // до 420px
+  .trips-filter ul {
+    gap: 15px;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+  }
+  .modal-content {
+    margin: 0 15px;
+  }
+}
+
+// --- Адаптивність модалки ---
+.modal-content {
+  // базова ширина + падінг з боків
+  width: 100%;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+@include responsive(tablet) {
+  .modal-overlay {
+    padding: 15px;
+  }
+  .modal-content {
+    max-width: 90%;
+  }
+  .add-trip-form {
+    padding: 15px;
+
+    h2 { font-size: 1.25rem; }
+    .form-actions { flex-direction: column; }
+  }
+}
+
+@include responsive(mobile-small) {
+  .modal-overlay {
+    padding: 10px;
+  }
+  .modal-content {
+    max-width: 100%;
+  }
+  .add-trip-form {
+    padding: 10px;
+
+    h2 { font-size: 1.1rem; }
+    .form-group input,
+    .form-group textarea { font-size: 0.85rem; }
+  }
+}

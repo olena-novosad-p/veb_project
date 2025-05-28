@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Сторінка входу для сервісу Trip to go">
+    <title>Вхід - Trip to go</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="main.html" class="header-logo">TRIP TO GO</a>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="trips.html">Мої подорожі</a></li>
+                    <li><a href="main.html#start">Почати подорож</a></li>
+                    <li><a href="login.html" class="active">Вхід</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="login-section">
+            <div class="login-form-container">
+                <form action="#" method="POST" class="login-form">
+                    <h2>LOGIN</h2>
+                    <div class="form-group">
+                        <label for="email" class="visually-hidden">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email" novalidate>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="visually-hidden">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password" novalidate>
+                    </div>
+                    <button type="submit" class="btn-submit">LOGIN</button>
+                </form>
+                <div class="login-prompt">
+                    <p>Ще не маєте аккаунту? <a href="register.html">Зареєструватися</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

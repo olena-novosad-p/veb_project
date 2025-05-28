@@ -1,0 +1,211 @@
+// Файл: scss/main.scss
+// Опис: Оновлені стилі для головної сторінки (main.html) з розширеною адаптивністю.
+
+@import 'variables_colors';
+@import 'variables_mix';
+
+// --- Загальні стилі ---
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background-color: $color-primary-bg;
+  color: $text-color-dark;
+  font-size: 16px; // Базовий розмір шрифту
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 20px; // Збільшив відступи для кращого вигляду
+}
+
+// --- Стилі для шапки (спільні з іншими сторінками) ---
+.header {
+  background-color: $color-primary-light;
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  transition: padding 0.3s ease;
+  
+  .container {
+    @include flex-center;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: $text-color-dark;
+  }
+
+  &-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 25px; // Збільшив відстань
+  }
+
+  &-nav a {
+    text-decoration: none;
+    color: $text-color-dark;
+    font-weight: bold;
+    padding-bottom: 5px;
+    transition: border-color 0.3s;
+
+    &.active, &:hover {
+      border-bottom: 2px solid $color-primary-dark;
+    }
+  }
+}
+
+// --- Секція-герой ---
+.hero {
+  height: 75vh; // Трохи вище
+  min-height: 450px;
+  // --- ОСЬ ТУТ Я ВИКОРИСТОВУЮ ТВОЄ ФОТО ---
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/photo-2.jpg') no-repeat center center/cover;
+  @include flex-center;
+  text-align: center;
+  margin-top: 65px; /* Відступ від фіксованої шапки */
+
+  &-content {
+    background-color: $color-primary-dark-75;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 650px;
+    
+    h1 {
+      color: $text-color-light;
+      font-size: 1.6rem;
+      font-weight: normal;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+// --- Секція переваг ---
+.features {
+  padding: 60px 0;
+  .container {
+    display: grid; // Використовуємо grid для гнучкості
+    grid-template-columns: repeat(2, 1fr); // Дві колонки
+    gap: 30px;
+  }
+  
+  .feature-card {
+    background-color: $color-primary-light;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+    h3 {
+      margin-top: 0;
+      color: $text-color-dark;
+    }
+  }
+}
+
+// --- Секція заклику до дії ---
+.cta {
+  padding: 50px 0;
+  text-align: center;
+
+  .btn-cta {
+    @include button-style($color-primary-dark, $text-color-light);
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    animation: pulse 2s infinite;
+  }
+}
+
+// --- Підвал ---
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: $color-primary-light;
+  color: $text-color-dark;
+}
+
+// --- Анімація для кнопки ---
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba($color-primary-dark, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba($color-primary-dark, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba($color-primary-dark, 0); }
+}
+
+// --- РОЗШИРЕНА АДАПТИВНІСТЬ ---
+@include responsive(tablet) { // до 1024px
+  .container {
+    padding: 0 30px;
+  }
+  .hero {
+    height: 65vh;
+  }
+  .hero-content h1 {
+    font-size: 1.4rem;
+  }
+  .features .container {
+    grid-template-columns: 1fr; // Одна колонка на планшетах
+  }
+}
+
+@include responsive(mobile-large) { // до 680px
+  body {
+    font-size: 15px;
+  }
+  .header {
+    position: static; // Шапка перестає бути фіксованою
+    padding: 15px 0;
+  }
+  .header .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero {
+    margin-top: 0;
+    height: 50vh;
+    min-height: 300px;
+  }
+  .hero-content {
+    margin: 0 15px;
+    padding: 25px;
+    h1 {
+      font-size: 1.2rem;
+    }
+  }
+  .features {
+    padding: 40px 0;
+  }
+}
+
+@include responsive(mobile-small) { // до 420px
+  .container {
+    padding: 0 15px;
+  }
+  .header-logo {
+    font-size: 1.3rem;
+  }
+  .header-nav ul {
+    gap: 15px;
+    font-size: 0.9rem;
+  }
+  .hero {
+    height: 60vh; // Збільшуємо висоту, щоб текст не накладався
+  }
+  .hero-content h1 {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  .feature-card {
+    padding: 20px;
+  }
+  .btn-cta {
+    font-size: 1rem;
+    padding: 12px 30px;
+  }
+}
